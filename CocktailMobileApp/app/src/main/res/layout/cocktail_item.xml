@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="680dp"
+        android:layout_height="680dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/button"
+        android:layout_above="@id/textView"
+        android:layout_marginBottom="5dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button"
+        android:layout_above="@id/textView2"
+        android:layout_marginBottom="5dp"
+        android:textSize="80sp"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button"
+        android:layout_alignLeft="@+id/button"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="250dp"
+        android:layout_marginBottom="80dp"
+        android:background="@color/button"
+        android:paddingLeft="110dp"
+        android:paddingRight="110dp"
+        android:text="EXTRACT"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

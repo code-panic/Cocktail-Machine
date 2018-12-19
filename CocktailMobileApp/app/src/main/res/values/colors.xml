@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="mohito">#00bb99</color>
+    <color name="sunrise">#ff5500</color>
+    <color name="sunshine">#00bbbb</color>
+    <color name="cinderella">#ff4455</color>
+    <color name="pinacolada">#ffbbaa</color>
+
+    <color name="button">#ffaa00</color>
+    <color name="white">#ffffff</color>
 </resources>
