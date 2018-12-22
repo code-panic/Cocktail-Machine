@@ -1,11 +1,11 @@
 package com.example.administrator.cocktailmobileapp;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,7 +31,7 @@ public class CocktailItemView extends LinearLayout {
         init(context);
     }
 
-    public void init(Context context){
+    public void init(final Context context){
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.cocktail_item,this,true);
@@ -45,8 +45,27 @@ public class CocktailItemView extends LinearLayout {
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("msg",BTCommand);
-                Bluetooth.getInstance().sendData(BTCommand);
+                Log.d("msg", "clickeventer " + Bluetooth.getInstance().getExtracting());
+                if (!Bluetooth.getInstance().getExtracting()) {
+                    button.setEnabled(false);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            button.setEnabled(true);
+                        }
+                    },3000);
+                    Bluetooth.getInstance().setExtracting(true);
+                    if(Bluetooth.getInstance().getExtracting())
+                        Log.d("msg", "꺄르르르ㅡ를");
+                    Log.d("msg","나");
+                    Toast.makeText(context,"추출을 시작합니다.",Toast.LENGTH_SHORT).show();
+                    Bluetooth.getInstance().sendData(BTCommand);
+                    Bluetooth.getInstance().thread = new BackgroundThread();
+                    Bluetooth.getInstance().thread.start();
+                } else {
+                    Log.d("msg","다");
+                    Toast.makeText(context,"이미 추출 중입니다.",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -59,7 +78,7 @@ public class CocktailItemView extends LinearLayout {
         textView2.setText(explanation);
     }
 
-    public void setCocktailImage(int resId){ imageView.setImageResource(resId); }
+    public void setCocktailImage(int cocktailId){ imageView.setImageResource(cocktailId); }
 
-    public void setMaterialImage(int resId){ ImageView2.setImageResource(resId); }
+    public void setrecipeImage(int recipeId){ ImageView2.setImageResource(recipeId); }
 }

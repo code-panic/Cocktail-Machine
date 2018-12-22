@@ -14,10 +14,11 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_alignLeft="@+id/button"
+        android:layout_height="300dp"
+        android:layout_alignParentRight="true"
         android:layout_above="@id/textView"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginLeft="-20dp"
+        android:layout_marginBottom="-50dp"/>
 
     <TextView
         android:id="@+id/textView"

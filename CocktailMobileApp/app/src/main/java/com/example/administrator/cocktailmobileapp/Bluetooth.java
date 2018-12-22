@@ -5,9 +5,13 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.util.UUID;
@@ -23,11 +27,13 @@ public class Bluetooth extends AppCompatActivity {
         return instance;
     }
 
-    private Bluetooth() {}
+    private Bluetooth() {
+    }
 
-    private BluetoothAdapter btAdapter = null;
-    private BluetoothSocket btSocket = null;
-    private OutputStream outStream = null;
+    BluetoothAdapter btAdapter = null;
+    BluetoothSocket btSocket = null;
+    OutputStream outStream = null;
+    InputStream inStream = null;
 
     // SPP UUID
     private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -35,36 +41,23 @@ public class Bluetooth extends AppCompatActivity {
     // 아두이노 맥주소
     private static String address = "AB:03:67:78:2B:0B";
 
-    public BluetoothAdapter getBtAdapter() {
-        return btAdapter;
+    private boolean isExtracting = false;
+
+    synchronized void setExtracting(boolean isExtracting) {
+        this.isExtracting = isExtracting;
     }
 
-    public void setBtAdapter(BluetoothAdapter btAdapter) {
-        this.btAdapter = btAdapter;
+    synchronized boolean getExtracting() {
+        return this.isExtracting;
     }
 
-    public BluetoothSocket getBtSocket() {
-        return btSocket;
-    }
-
-    public void setBtSocket(BluetoothSocket btSocket) {
-        this.btSocket = btSocket;
-    }
-
-    public OutputStream getOutStream() {
-        return outStream;
-    }
-
-    public void setOutStream(OutputStream outStream) {
-        this.outStream = outStream;
-    }
-
+    Thread thread;
 
     public void checkBTState() {
         btAdapter = BluetoothAdapter.getDefaultAdapter();
 
         //블루투스 상태 확인
-        if(btAdapter==null) {
+        if (btAdapter == null) {
             //기기에서 블루투스를 지원하지 않는 경우
         } else {
             //기기에서 블루투스를 지원하는 경우
@@ -81,13 +74,14 @@ public class Bluetooth extends AppCompatActivity {
 
     public BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
         //버전에 맞춰 Bluetooth 객체 생성
-        if(Build.VERSION.SDK_INT >= 10){
+        if (Build.VERSION.SDK_INT >= 10) {
             try {
-                final Method m = device.getClass().getMethod("createInsecureRfcommSocketToServiceRecord", new Class[] { UUID.class });
+                final Method m = device.getClass().getMethod("createInsecureRfcommSocketToServiceRecord", new Class[]{UUID.class});
                 return (BluetoothSocket) m.invoke(device, MY_UUID);
-            } catch (Exception e) { }
+            } catch (Exception e) {
+            }
         }
-        return  device.createRfcommSocketToServiceRecord(MY_UUID);
+        return device.createRfcommSocketToServiceRecord(MY_UUID);
     }
 
     public void sendData(String message) {
@@ -95,17 +89,19 @@ public class Bluetooth extends AppCompatActivity {
 
         try {
             outStream.write(msgBuffer);
-        } catch (IOException e) { }
+        } catch (IOException e) {
+        }
     }
 
-    public void BTConnect(){
+    public void BTConnect() {
         //BluetoothDevice 객체를 아두이노 맥 주소를 이용해 아두이노와 연결
         BluetoothDevice device = btAdapter.getRemoteDevice(address);
 
         //BluetoothDevice 객체를 이용해 블루투스 소켓을 얻습니다.
         try {
             btSocket = createBluetoothSocket(device);
-        } catch (IOException e1) { }
+        } catch (IOException e1) {
+        }
 
         //연결 시작!
         try {
@@ -113,24 +109,78 @@ public class Bluetooth extends AppCompatActivity {
         } catch (IOException e) {
             try {
                 btSocket.close();
-            } catch (IOException e2) { }
+            } catch (IOException e2) {
+            }
         }
 
         try {
             outStream = btSocket.getOutputStream();
-        } catch (IOException e) { }
+            inStream = btSocket.getInputStream();
+        } catch (IOException e) {
+        }
 
     }
 
-    public void BTConnectCancle(){
+    public void BTConnectCancle() {
         if (outStream != null) {
             try {
                 outStream.flush();
-            } catch (IOException e) { }
+            } catch (IOException e) {
+            }
         }
 
         try {
             btSocket.close();
-        } catch (IOException e2) { }
+        } catch (IOException e2) {
+        }
     }
+
+
+
+//    public void receiveData() {
+//        final Handler handler = new Handler();
+//
+//        // 데이터를 수신하기 위한 쓰레드 생성
+//        workerThread = new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                while (Thread.currentThread().isInterrupted()) {
+//                    try {
+//                        // 데이터를 수신했는지 확인합니다.
+//                        int byteAvailable = inStream.available();
+//
+//                        // 데이터가 수신 된 경우
+//                        if (byteAvailable > 0) {
+//                            // 입력 스트림에서 바이트 단위로 읽어 옵니다.
+//                            byte[] bytes = new byte[byteAvailable];
+//                            inStream.read(bytes);
+//
+//                            // 인코딩 된 바이트 배열을 문자열로 변환
+//                            final String text = new String(bytes, "US-ASCII");
+//
+//                            Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();;
+//
+//                            handler.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    if(text.equals("done")){
+//                                        Log.d("msg","다");
+//                                        Toast.makeText(getApplicationContext(),"추출을 시작합니다.",Toast.LENGTH_SHORT).show();;
+//                                        Bluetooth.getInstance().isExtracting = false;
+//                                    }
+//                                }
+//                            });
+//
+//                        }
+//                    } catch (IOException e) { }
+//                    try {
+//                        // 1초마다 받아옴
+//                        Thread.sleep(1000);
+//                    } catch (InterruptedException e) { }
+//                }
+//            }
+//        });
+//        workerThread.start();
+//    }
 }
