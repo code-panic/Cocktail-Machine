@@ -28,6 +28,7 @@ public class Bluetooth extends AppCompatActivity {
     }
 
     private Bluetooth() {
+
     }
 
     BluetoothAdapter btAdapter = null;
@@ -74,13 +75,14 @@ public class Bluetooth extends AppCompatActivity {
 
     public BluetoothSocket createBluetoothSocket(BluetoothDevice device) throws IOException {
         //버전에 맞춰 Bluetooth 객체 생성
-        if (Build.VERSION.SDK_INT >= 10) {
-            try {
-                final Method m = device.getClass().getMethod("createInsecureRfcommSocketToServiceRecord", new Class[]{UUID.class});
-                return (BluetoothSocket) m.invoke(device, MY_UUID);
-            } catch (Exception e) {
-            }
+
+        try {
+            final Method m = device.getClass().getMethod("createInsecureRfcommSocketToServiceRecord", new Class[]{UUID.class});
+            return (BluetoothSocket) m.invoke(device, MY_UUID);
+        } catch (Exception e) {
+
         }
+
         return device.createRfcommSocketToServiceRecord(MY_UUID);
     }
 
@@ -134,53 +136,4 @@ public class Bluetooth extends AppCompatActivity {
         } catch (IOException e2) {
         }
     }
-
-
-
-//    public void receiveData() {
-//        final Handler handler = new Handler();
-//
-//        // 데이터를 수신하기 위한 쓰레드 생성
-//        workerThread = new Thread(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                while (Thread.currentThread().isInterrupted()) {
-//                    try {
-//                        // 데이터를 수신했는지 확인합니다.
-//                        int byteAvailable = inStream.available();
-//
-//                        // 데이터가 수신 된 경우
-//                        if (byteAvailable > 0) {
-//                            // 입력 스트림에서 바이트 단위로 읽어 옵니다.
-//                            byte[] bytes = new byte[byteAvailable];
-//                            inStream.read(bytes);
-//
-//                            // 인코딩 된 바이트 배열을 문자열로 변환
-//                            final String text = new String(bytes, "US-ASCII");
-//
-//                            Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();;
-//
-//                            handler.post(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    if(text.equals("done")){
-//                                        Log.d("msg","다");
-//                                        Toast.makeText(getApplicationContext(),"추출을 시작합니다.",Toast.LENGTH_SHORT).show();;
-//                                        Bluetooth.getInstance().isExtracting = false;
-//                                    }
-//                                }
-//                            });
-//
-//                        }
-//                    } catch (IOException e) { }
-//                    try {
-//                        // 1초마다 받아옴
-//                        Thread.sleep(1000);
-//                    } catch (InterruptedException e) { }
-//                }
-//            }
-//        });
-//        workerThread.start();
-//    }
 }
