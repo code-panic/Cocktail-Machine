@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">CocktailMobileApp</string>
-    <string name="title_activity_mohito">mohito</string>
+    <string name="app_name">Overflow</string>
+
+    <string name="button_text">Select</string>
+
+    <string name="dummy_name">Mogito</string>
+    <string name="dummy_description"> Lorem Ipsum has been the industrys standard\n dummy text ever since the 1500s, when an\n unknown printer took a galley of type</string>
+
 </resources>

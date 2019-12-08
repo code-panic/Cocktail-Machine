@@ -15,10 +15,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         mViewPager = findViewById(R.id.viewpager);
 
-
+        SlideAdapter slideAdapter = new SlideAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(slideAdapter);
         mViewPager.setCurrentItem(0);
     }
 }
