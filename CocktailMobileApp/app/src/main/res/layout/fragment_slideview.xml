@@ -3,27 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background_slideview">
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.CardView
         android:id="@+id/back_card"
-        android:layout_width="1080dp"
-        android:layout_height="560dp"
+        android:layout_width="800dp"
+        android:layout_height="400dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/background_card"
-        app:cardCornerRadius="32dp"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardCornerRadius="@dimen/corner_radius"
         app:cardElevation="0dp">
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:id="@+id/main_card"
-        android:layout_width="960dp"
-        android:layout_height="640dp"
+        android:layout_width="720dp"
+        android:layout_height="480dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/background_card"
-        app:cardCornerRadius="32dp"
+        app:cardCornerRadius="@dimen/corner_radius"
         app:cardElevation="0dp">
 
         <ImageView
@@ -46,8 +44,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="72dp"
-                android:layout_marginTop="72dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="36dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -57,38 +55,39 @@
                     android:fontFamily="@font/spoqa_bold"
                     android:text="@string/dummy_name"
                     android:textColor="@color/colorWhite"
-                    android:textSize="60sp" />
+                    android:textSize="@dimen/name_size" />
 
                 <TextView
                     android:id="@+id/title"
+                    android:layout_marginTop="-24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/spoqa_regular"
                     android:text="tastes like summer"
                     android:textColor="@color/colorWhite"
-                    android:textSize="36sp" />
+                    android:textSize="@dimen/title_size" />
 
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:fontFamily="@font/spoqa_light"
-                    android:lineHeight="48sp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/spoqa_regular"
+                    android:lineHeight="@dimen/description_line_height"
                     android:text="@string/dummy_description"
                     android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
+                    android:textSize="@dimen/description_size" />
 
                 <Button
                     android:id="@+id/button"
                     android:layout_width="240dp"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="24dp"
                     android:background="@drawable/background_button"
                     android:fontFamily="@font/spoqa_regular"
                     android:text="@string/button_text"
                     android:textColor="@color/colorWhite"
-                    android:textSize="24sp" />
+                    android:textSize="@dimen/button_text_size" />
             </LinearLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
