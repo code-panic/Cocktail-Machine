@@ -8,4 +8,7 @@
     <color name="colorBlack">#393E46</color>
     <color name="colorBlack_50">#80393E46</color>
     <color name="colorGreen">#c3f0ca</color>
+
+    <color name="colorSunriseLight">#feca05</color>
+    <color name="colorSunriseDark">#fa5a06</color>
 </resources>

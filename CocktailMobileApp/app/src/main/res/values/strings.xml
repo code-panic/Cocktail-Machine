@@ -3,7 +3,9 @@
 
     <string name="button_text">Select</string>
 
-    <string name="dummy_name">Mogito</string>
-    <string name="dummy_description"> Lorem Ipsum has been the industrys standard\n dummy text ever since the 1500s, when an\n unknown printer took a galley of type</string>
-
+    <string name="dummy_description">
+        모히토는 쿠바에서 만들어진 칵테일로\n
+        미국 소설가이자 저널리스트였던\n
+        어니스트 헤밍웨이가 즐겨 마셨던 것으로 유명하다
+    </string>
 </resources>

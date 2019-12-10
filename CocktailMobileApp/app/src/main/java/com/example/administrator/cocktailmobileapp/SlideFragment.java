@@ -55,27 +55,29 @@ public class SlideFragment extends Fragment {
         mCardImage = view.findViewById(R.id.card_image);
         mBackground = view.findViewById(R.id.background);
 
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
 
         mName.setText(bundle.getString("name"));
         mTitle.setText(bundle.getString("title"));
         mDesciption.setText(bundle.getString("description"));
         mCardImage.setImageBitmap(getRoundedBitmap(bundle.getInt("imageID")));
 
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BL_TR, new int[] {getResources().getColor(R.color.colorGreen), getResources().getColor(R.color.colorWhite)});
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BL_TR, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
         gradientDrawable.setCornerRadius(0f);
         mBackground.setBackgroundDrawable(gradientDrawable);
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                CustomDialog dialog = new CustomDialog(getContext(), bundle.getInt("pos"), bundle.getString("name"));
+                dialog.show();
             }
         });
 
         return view;
     }
 
+    //이미지의 모서리 라운딩 처리
     private Bitmap getRoundedBitmap(int imageId) {
         Bitmap bitmap = BitmapFactory.decodeResource( getResources(), imageId);
         RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);

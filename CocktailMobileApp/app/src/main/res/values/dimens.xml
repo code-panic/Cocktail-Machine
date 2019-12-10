@@ -1,5 +1,5 @@
 <resources>
-    <dimen name="corner_radius">24dp</dimen>
+    <dimen name="corner_radius">32dp</dimen>
 
     <dimen name="name_size">48sp</dimen>
     <dimen name="title_size">24sp</dimen>
