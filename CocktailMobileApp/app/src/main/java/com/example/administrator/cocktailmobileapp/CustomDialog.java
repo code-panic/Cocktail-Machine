@@ -43,6 +43,10 @@ public class CustomDialog extends Dialog {
             @Override
             public void onClick(View view) {
                 setContentView(R.layout.dialog_makeing);
+
+                Bluetooth.getInstance().writeData(mPos + "");
+
+                Bluetooth.getInstance().start();
             }
         });
 
