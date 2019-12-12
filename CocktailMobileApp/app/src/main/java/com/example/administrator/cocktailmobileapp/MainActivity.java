@@ -3,12 +3,6 @@ package com.example.administrator.cocktailmobileapp;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.WindowManager;
-import android.widget.Button;
-
-import com.rd.PageIndicatorView;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(slideAdapter);
         mViewPager.setCurrentItem(0);
 
-//        PageIndicatorView pageIndicatorView = findViewById(R.id.pageIndicatorView);
     }
 }
 

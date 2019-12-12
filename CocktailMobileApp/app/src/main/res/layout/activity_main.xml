@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:attrs="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:attrs="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
@@ -18,9 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="64dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="96dp"
-        app:piv_animationType="scale"
+        app:piv_animationType="worm"
         app:piv_dynamicCount="true"
         app:piv_interactiveAnimation="true"
         app:piv_selectedColor="@color/colorBlack"
