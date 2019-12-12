@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CustomDialog extends Dialog {
@@ -44,7 +45,34 @@ public class CustomDialog extends Dialog {
             public void onClick(View view) {
                 setContentView(R.layout.dialog_makeing);
 
-                Bluetooth.getInstance().writeData(mPos + "");
+                final ImageView stateImageView = mSelf.findViewById(R.id.state_image);
+                final TextView stateTextView = mSelf.findViewById(R.id.state_text);
+
+                //Bluetooth.getInstance().writeData(mPos + "");
+
+                Bluetooth.getInstance().setBluetoothCall(new Bluetooth.BluetoothCall() {
+                    @Override
+                    public void onMaking() {
+                        /* 후 수정 */
+                        if (stateTextView.getText().equals("칵테일을 만드는 중입니다 .")) {
+                            stateImageView.setImageResource(R.drawable.image_making_2);
+                            stateTextView.setText("칵테일을 만드는 중입니다 . .");
+                        } else if (stateTextView.getText().equals("칵테일을 만드는 중입니다 . .")) {
+                            stateImageView.setImageResource(R.drawable.image_making_3);
+                            stateTextView.setText("칵테일을 만드는 중입니다 . . .");
+                        } else if (stateTextView.getText().equals("칵테일을 만드는 중입니다 . . .")) {
+                            stateImageView.setImageResource(R.drawable.image_making_1);
+                            stateTextView.setText("칵테일을 만드는 중입니다 .");
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        setContentView(R.layout.dialog_complete);
+
+
+                    }
+                });
 
                 Bluetooth.getInstance().start();
             }

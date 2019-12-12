@@ -8,14 +8,14 @@
     android:gravity="center">
 
     <ImageView
-        android:id="@+id/text"
+        android:id="@+id/state_image"
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginBottom="12dp"
-        android:src="@drawable/image_cocktail" />
+        android:src="@drawable/image_making_1" />
 
     <TextView
-        android:id="@+id/state"
+        android:id="@+id/state_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/spoqa_regular"

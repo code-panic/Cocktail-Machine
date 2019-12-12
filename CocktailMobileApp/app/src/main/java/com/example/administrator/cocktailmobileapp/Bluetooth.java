@@ -3,14 +3,10 @@ package com.example.administrator.cocktailmobileapp;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Method;
 import java.util.UUID;
 
 public class Bluetooth extends Thread {
@@ -29,44 +25,65 @@ public class Bluetooth extends Thread {
         return instance;
     }
 
+    public interface BluetoothCall {
+        void onMaking();
+        void onComplete();
+    }
+
     private BluetoothAdapter mBluetoothAdapter;
     private BluetoothDevice mBluetoothDevice;
     private BluetoothSocket mBluetoothSocket;
     private OutputStream mOutputStream;
     private InputStream mInputStream;
 
+    private BluetoothCall mBluetoothCall;
+
     public Bluetooth () {
-        try {
-            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-            mBluetoothDevice = mBluetoothAdapter.getRemoteDevice(MAC_ADDRESS);
-            mBluetoothSocket = mBluetoothDevice.createInsecureRfcommSocketToServiceRecord(MY_UUID);
-
-            mBluetoothSocket.connect();
-
-            mOutputStream = mBluetoothSocket.getOutputStream();
-            mInputStream = mBluetoothSocket.getInputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+//            mBluetoothDevice = mBluetoothAdapter.getRemoteDevice(MAC_ADDRESS);
+//            mBluetoothSocket = mBluetoothDevice.createInsecureRfcommSocketToServiceRecord(MY_UUID);
+//
+//            mBluetoothSocket.connect();
+//
+//            mOutputStream = mBluetoothSocket.getOutputStream();
+//            mInputStream = mBluetoothSocket.getInputStream();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void run() {
-        byte[] buffer = new byte[1024];
-
         while (true) {
             try {
-                Thread.sleep(300);
-
-                int bytes = mInputStream.read(buffer);
-
-
-                Log.d(TAG, bytes + "");
-            } catch (IOException e) {
-                e.printStackTrace();
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            mBluetoothCall.onMaking();
         }
+
+//        try {
+//            byte[] buffer = new byte[1024];
+//
+//            while (true) {
+//                    Thread.sleep(300);
+//
+//                    mBluetoothCall.onMaking();
+//
+//                    if (mInputStream.read(buffer) > 0) {
+//                        mBluetoothCall.onComplete();
+//                        break;
+//                    }
+//            }
+//
+//            wait();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void writeData (String data) {
@@ -75,5 +92,9 @@ public class Bluetooth extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setBluetoothCall(BluetoothCall bluetoothCall) {
+        this.mBluetoothCall = bluetoothCall;
     }
 }
