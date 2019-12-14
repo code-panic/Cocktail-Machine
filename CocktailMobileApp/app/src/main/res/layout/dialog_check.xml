@@ -14,7 +14,7 @@
         android:layout_marginBottom="24dp"
         android:fontFamily="@font/spoqa_regular"
         android:text="모히또 칵테일을 만들까요?"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/colorBlack"
         android:textSize="24sp" />
 

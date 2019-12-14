@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #include <LiquidCrystal_I2C.h>
 
-SoftwareSerial BTSerial(2, 3);   //bluetooth module Tx:Digital 2 Rx:Digital 3
+SoftwareSerial BlueToothSerial(2, 3);   //bluetooth module Tx:Digital 2 Rx:Digital 3
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // I2C LCD 객체 선언
 
 int led = 6;
@@ -16,7 +16,7 @@ int orange = 13;
 
 void setup() {
   Serial.begin(9600);
-  BTSerial.begin(9600);
+  BlueToothSerial.begin(9600);
 
   pinMode(led,OUTPUT);
   
@@ -33,21 +33,18 @@ void setup() {
   lcd.setCursor(0,0);
   lcd.print("OVERFLOW");
   
-  Serial.println("ATcommand");  //ATcommand Start
+  Serial.println("-- 아두이노 세팅 완료 --");
 }
 
-void loop() {
-  if (Serial.available()){
-    BTSerial.write(Serial.read());
-  }
-  
-  if (BTSerial.available()){
-    char msg = BTSerial.read();
-    Serial.write(msg);
+void loop() { 
+  if (BlueToothSerial.available()){
+    char message = BlueToothSerial.read();
+    Serial.write(message);
+    
     digitalWrite(led,HIGH);
     lcd.setCursor(0,1);
     
-    switch(msg){
+    switch(message){
       case '1'://모히토
         lcd.print("mohito");
         
@@ -61,6 +58,10 @@ void loop() {
         delay(3000);
         digitalWrite(cider,LOW);      
         digitalWrite(pineapple,LOW);
+
+        Serial.write("모히또가 완성되었습니다!");
+        BlueToothSerial.print("complete"); 
+        
         break;
       case '2'://선라이즈
         lcd.print("sunrise");    
@@ -119,6 +120,6 @@ void loop() {
     lcd.setCursor(0,0);
     lcd.print("OVERFLOW");
 
-    BTSerial.print("d");
+    BlueToothSerial.print("complete");
   }
 }

@@ -10,23 +10,21 @@
         android:layout_width="800dp"
         android:layout_height="400dp"
         android:layout_centerInParent="true"
-        app:cardBackgroundColor="@color/colorWhite"
+        app:cardBackgroundColor="#80fcfbfc"
         app:cardCornerRadius="@dimen/corner_radius"
         app:cardElevation="0dp">
 
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:id="@+id/main_card"
         android:layout_width="720dp"
         android:layout_height="480dp"
-        android:layout_centerInParent="true"
-        app:cardCornerRadius="@dimen/corner_radius"
-        app:cardElevation="0dp">
+        android:layout_centerInParent="true">
 
         <ImageView
             android:id="@+id/card_image"
-            android:layout_width="match_parent"
+            android:layout_width="720dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/image_mojito" />
@@ -34,61 +32,54 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_image_cover"/>
+            android:background="@drawable/background_image_cover" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="48dp"
+            android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="48dp"
-                android:layout_marginTop="48dp"
-                android:orientation="vertical">
+                android:fontFamily="@font/spoqa_bold"
+                android:text="모히또"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/name_size" />
 
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spoqa_bold"
-                    android:text="모히또"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/name_size" />
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/spoqa_regular"
+                android:text="쿠바의 작가가 사랑한 칵테일"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/title_size" />
 
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_marginTop="-24dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/spoqa_regular"
-                    android:text="쿠바의 작가가 사랑한 칵테일"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/title_size" />
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/spoqa_light"
+                android:lineSpacingMultiplier="1.8"
+                android:text="@string/dummy_description"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/description_size" />
 
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/spoqa_regular"
-                    android:lineHeight="@dimen/description_line_height"
-                    android:text="@string/dummy_description"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/description_size" />
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="180dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="36dp"
-                    android:background="@drawable/background_button_select"
-                    android:fontFamily="@font/spoqa_regular"
-                    android:text="@string/button_text"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="@dimen/button_text_size" />
-            </LinearLayout>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="180dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/background_button_select"
+                android:fontFamily="@font/spoqa_regular"
+                android:text="@string/button_text"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/button_text_size" />
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

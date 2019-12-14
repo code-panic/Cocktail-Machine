@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/spoqa_regular"
         android:text="칵테일을 완성했습니다!"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/colorBlack"
         android:textSize="24sp" />
 </LinearLayout>

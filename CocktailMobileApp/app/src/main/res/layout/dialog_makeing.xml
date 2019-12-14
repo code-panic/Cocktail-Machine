@@ -19,8 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/spoqa_regular"
-        android:text="칵테일을 만드는 중입니다 . . ."
-        android:textAlignment="center"
+        android:text="칵테일을 만드는 중입니다 . "
+        android:gravity="center"
         android:textColor="@color/colorBlack"
         android:textSize="24sp" />
 </LinearLayout>
