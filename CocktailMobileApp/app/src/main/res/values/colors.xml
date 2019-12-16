@@ -9,8 +9,19 @@
 
     <color name="colorBlack">#393E46</color>
     <color name="colorBlack_50">#80393E46</color>
-    <color name="colorGreen">#c3f0ca</color>
+
+    <color name="colorSunshineLight">#47C0C1</color>
+    <color name="colorSunshineDark">#018896</color>
+
+    <color name="colorMojitoLight">#E7E8BC</color>
+    <color name="colorMojitoDark">#D7DC85</color>
+
+    <color name="colorPinacoladaLight">#EFD2B4</color>
+    <color name="colorPinacoladaDark">#C18E33</color>
 
     <color name="colorSunriseLight">#feca05</color>
     <color name="colorSunriseDark">#fa5a06</color>
+
+    <color name="colorCinderellaLight">#B68403</color>
+    <color name="colorCinderellaDark">#780212</color>
 </resources>

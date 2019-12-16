@@ -1,33 +1,81 @@
 #include <SoftwareSerial.h>
 #include <LiquidCrystal_I2C.h>
 
-SoftwareSerial BlueToothSerial(2, 3);   //bluetooth module Tx:Digital 2 Rx:Digital 3
-LiquidCrystal_I2C lcd(0x27, 16, 2);  // I2C LCD 객체 선언
+/* 관련 핀 상수화하기 */
+#define TX 2
+#define RX 3
+#define LED 5
 
-int led = 6;
+SoftwareSerial blueToothSerial(TX, RX);   // 블루투스 객체 선언
+LiquidCrystal_I2C lcd(0x27, 16, 2);  // LCD 객체 선언
 
-int coladamix = 7;
-int grenadine = 8;
-int lime = 9;
-int pineapple = 10;
-int lemon = 11;
-int cider = 12;
-int orange = 13;
+/* 
+ *  여기에서 레시피 비율을 조절할 수 있습니다 
+ *  (각 배열마다 총합 개를 맞춰야 칵테일의 양이 일정하게 유지됩니다)
+ *  
+ *  ex)
+ *  
+ *  -- 레시피 --
+ *  1. 사이다 : 망고주스 : 레몬에이드 = 1 : 3 : 4
+ *  1. 사이다 : 망고주스 : 레몬에이드 = 1 : 2 : 1
+ *  
+ *  1번 모터 사이다 
+ *  MOTER 2 // 망고주스
+ *  MOTER 3 // 레몬에이드  일 경우,
+ *  
+ *  int recipe[2][3] = { {1, 3, 4},         // int recipe[레시피 개수][7]
+ *                       {2, 4, 2} }
+ *  1 + 3 + 4 = 8
+ *  2 + 4 + 2 = 0
+ */
+
+/*
+ * -- 2019 칵테일 레시피 --
+ * 
+ * 1번 모터 사이다 
+ * 2번 모터 망고주스
+ * 3번 모터 레몬에이드
+ * 4번 모터 밀키스
+ * 5번 모터 자몽에이드
+ * 6번 모터 파인애플 환타
+ * 7번 모터 파워에이드
+ * 
+ * 1. 사이다 1 + 자몽에이드 5 + 밀키스 1
+ * 2. 망고 1 + 사이다 1 + 밀키스 1
+ * 3. 망고 1 + 환타 1 + 레몬에이드 1 + 밀키스 1
+ * 4. 사이다 2+ 파워에이드 2 + 밀키스 1
+ * 5. 자몽에이드 1 + 파워에이드 1
+ */
+ 
+int recipes[5][7] = { {20, 0, 0, 20, 20, 0, 0},
+                     {20, 20, 0, 0, 20, 0, 0},
+                     {0, 15, 15, 15, 0, 15 ,0},
+                     {24, 0, 0, 12, 0, 0, 24}, 
+                     {0, 0, 0, 30, 0, 0, 30} };
+
+/* 
+ * 여기에서 칵테일의 양을 조절할 수 있습니다
+ * volume 값과 칵테일의 양은 정비례합니다
+ */
+ 
+ int volume = 100;
 
 void setup() {
+  /* 시리얼 창 설정 */
   Serial.begin(9600);
-  BlueToothSerial.begin(9600);
+  blueToothSerial.begin(9600);
 
-  pinMode(led,OUTPUT);
-  
-  pinMode(coladamix,OUTPUT);
-  pinMode(cider,OUTPUT);
-  pinMode(lime,OUTPUT);
-  pinMode(pineapple,OUTPUT);
-  pinMode(lemon,OUTPUT);
-  pinMode(grenadine,OUTPUT);
-  pinMode(orange,OUTPUT);
-  
+  /* 핀 모드 설정 */
+  pinMode(LED,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(8,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(10,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(12,OUTPUT);
+  pinMode(13,OUTPUT);
+
+  /* Lcd 판 기본설정 */
   lcd.begin();
   lcd.backlight();
   lcd.setCursor(0,0);
@@ -36,90 +84,35 @@ void setup() {
   Serial.println("-- 아두이노 세팅 완료 --");
 }
 
-void loop() { 
-  if (BlueToothSerial.available()){
-    char message = BlueToothSerial.read();
+void loop() {
+  if (blueToothSerial.available()){
+    char message = blueToothSerial.read();
     Serial.write(message);
-    
-    digitalWrite(led,HIGH);
-    lcd.setCursor(0,1);
-    
-    switch(message){
-      case '1'://모히토
-        lcd.print("mohito");
-        
-        digitalWrite(lime,HIGH);
-        digitalWrite(lemon,HIGH);
-        digitalWrite(cider,HIGH);
-        digitalWrite(pineapple,HIGH);
-        delay(500);
-        digitalWrite(lemon,LOW);
-        digitalWrite(lime,LOW);
-        delay(3000);
-        digitalWrite(cider,LOW);      
-        digitalWrite(pineapple,LOW);
 
-        Serial.write("모히또가 완성되었습니다!");
-        BlueToothSerial.print("complete"); 
-        
-        break;
-      case '2'://선라이즈
-        lcd.print("sunrise");    
-        
-        digitalWrite(pineapple,HIGH);
-        delay(6000);
-        digitalWrite(pineapple,LOW);
-        digitalWrite(grenadine,HIGH);
-        delay(1000);
-        digitalWrite(grenadine,LOW);
-        break;
-           
-      case '3'://선샤인
-        lcd.print("sunshine");
-        
-        digitalWrite(pineapple,HIGH);
-        digitalWrite(orange,HIGH);
-        digitalWrite(lemon,HIGH);
-        digitalWrite(grenadine,HIGH);
-        delay(1500);
-        digitalWrite(grenadine,LOW);
-        digitalWrite(lemon,LOW);
-        delay(1500);
-        digitalWrite(orange,LOW);
-        delay(3000);
-        digitalWrite(pineapple,LOW);
-        break;
-        
-      case '4'://신데렐라
-        lcd.print("cinderella");
-        
-        digitalWrite(pineapple,HIGH);
-        digitalWrite(orange,HIGH);
-        digitalWrite(lemon,HIGH);
-        delay(500);
-        digitalWrite(lemon,LOW);
-        delay(3000);
-        digitalWrite(pineapple,LOW);
-        digitalWrite(orange,LOW);
-        break;   
-        
-      case '5'://피나콜라다
-        lcd.print("pinacolada");
-        
-        digitalWrite(pineapple,HIGH);
-        digitalWrite(coladamix,HIGH);
-        delay(1500);
-        digitalWrite(coladamix,LOW);
-        delay(3000);
-        digitalWrite(pineapple,LOW);
-        break;   
+    /* 칵테일 만들기 전 LED on */
+    digitalWrite(LED,HIGH);
+    delay(3000);
+    
+    setLCDText("MAKING");
+    
+    /* 칵테일 만들기 */
+    for (int i = 0; i < 7; i++) {
+      digitalWrite(i + 7, HIGH);
+      delay(volume * recipes[atoi(message)][i]);
+      digitalWrite(i + 7, LOW);
     }
-    digitalWrite(led,LOW);
 
-    lcd.clear();
-    lcd.setCursor(0,0);
-    lcd.print("OVERFLOW");
+    /* 칵테일 만든 후에 LED off */
+    delay(1000);
+    digitalWrite(LED,LOW);
 
-    BlueToothSerial.print("complete");
+    setLCDText("COMPLETE!");
+    
+    blueToothSerial.print("complete");
   }
+}
+
+void setLCDText(String text) {
+    lcd.setCursor(0,1);
+    lcd.print(text);
 }

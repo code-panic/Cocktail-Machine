@@ -36,7 +36,7 @@ public class SlideFragment extends Fragment {
         bundle.putInt("imageID", imageID);
         bundle.putInt("gradientStartColor", gradientStartColor);
         bundle.putInt("gradientEndColor", gradientEndColor);
-        bundle.putInt("position", position);
+        bundle.putInt("pos", position);
 
         slideFragment.setArguments(bundle);
 
