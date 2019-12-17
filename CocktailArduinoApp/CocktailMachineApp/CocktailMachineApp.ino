@@ -110,8 +110,12 @@ void loop() {
       digitalWrite(LED,LOW);
     
       setLCDText("COMPLETE!");
-    
-      blueToothSerial.print("complete");
+
+      /* 
+       * 완성메제지 보내기  
+       * 최대한 짧게 보내는 게 좋습니다
+       */
+      blueToothSerial.print("0");
     } else {
       Serial.print(message);
     }

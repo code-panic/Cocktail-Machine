@@ -21,6 +21,6 @@
         android:fontFamily="@font/spoqa_regular"
         android:text="칵테일을 완성했습니다!"
         android:gravity="center"
-        android:textColor="@color/colorBlack"
+        android:textColor="@color/colorBlack255"
         android:textSize="24sp" />
 </LinearLayout>

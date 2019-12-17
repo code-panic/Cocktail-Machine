@@ -30,6 +30,12 @@ public class CustomDialog extends Dialog {
     private CustomDialog(Context context) {
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
 
+        /* 백그라운드 테마 설정 */
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        layoutParams.dimAmount = 0.5f;
+        getWindow().setAttributes(layoutParams);
+
         mHandler = new Handler();
     }
 
@@ -38,13 +44,9 @@ public class CustomDialog extends Dialog {
         super.onCreate(savedInstanceState);
     }
 
-    public void show (int pos, String name) {
-        this.show();
+    public void show (final int pos, String name) {
 
-        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-        layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        layoutParams.dimAmount = 0.8f;
-        getWindow().setAttributes(layoutParams);
+        this.show();
 
         setContentView(R.layout.dialog_check);
 
@@ -62,7 +64,7 @@ public class CustomDialog extends Dialog {
                 final ImageView stateImageView = findViewById(R.id.state_image);
                 final TextView stateTextView = findViewById(R.id.state_text);
 
-                Bluetooth.getInstance().writeData("1");
+                Bluetooth.getInstance().writeData(pos + "");
 
                 mMakingNum = 0;
 
@@ -88,8 +90,10 @@ public class CustomDialog extends Dialog {
 
                     @Override
                     public void onComplete() {
-                        stateImageView.setImageResource(R.drawable.image_making_3);
-                        stateTextView.setText("칵테일을 완성했습니다");
+                        stateImageView.setImageResource(R.drawable.image_complete);
+                        stateTextView.setText("칵테일을 완성했습니다!");
+
+
                     }
                 });
             }

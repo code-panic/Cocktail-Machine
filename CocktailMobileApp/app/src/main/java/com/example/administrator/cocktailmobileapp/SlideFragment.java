@@ -25,7 +25,7 @@ public class SlideFragment extends Fragment {
     private ImageView mCardImage;
     private RelativeLayout mBackground;
 
-    public static SlideFragment createSlideFragment (String name, String title, String description, int imageID , GradientDrawable.Orientation gradientAngle, int gradientStartColor, int gradientEndColor, int position) {
+    public static SlideFragment createSlideFragment (String name, String title, String description, int imageID , int gradientStartColor, int gradientEndColor, int position) {
         SlideFragment slideFragment = new SlideFragment();
 
         Bundle bundle = new Bundle();
@@ -61,7 +61,7 @@ public class SlideFragment extends Fragment {
         mDesciption.setText(bundle.getString("description"));
         mCardImage.setImageDrawable(getRoundedBitmap(bundle.getInt("imageID")));
 
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BL_TR, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
         gradientDrawable.setCornerRadius(0f);
         mBackground.setBackgroundDrawable(gradientDrawable);
 
@@ -86,16 +86,4 @@ public class SlideFragment extends Fragment {
 
         return roundedDrawable;
     }
-
-//    RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(context.getResources(), source);
-//        drawable.setCircular(true);
-//        drawable.setCornerRadius(source.getWidth() / 2.0f);
-//        return drawable.getBitmap();
-//
-//    Bitmap source = ((BitmapDrawable) mProfileImage.getDrawable()).getBitmap();
-//    RoundedBitmapDrawable drawable =
-//            RoundedBitmapDrawableFactory.create(getContext().getResources(), source);
-//            drawable.setCircular(true);
-//            drawable.setCornerRadius(Math.max(source.getWidth() / 2.0f, source.getHeight() / 2.0f));
-//            mProfileImage.setImageDrawable(drawable);
 }

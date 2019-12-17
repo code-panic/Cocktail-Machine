@@ -23,7 +23,6 @@ public class SlideAdapter extends FragmentPagerAdapter {
                                 "레몬, 파인애플까지 다양한 재료가\n" +
                                 "입에서 톡톡 터진다",
                         R.drawable.image_sunshine,
-                        GradientDrawable.Orientation.BR_TL,
                         R.color.colorSunshineLight,
                         R.color.colorSunshineDark,
                         pos);
@@ -35,7 +34,6 @@ public class SlideAdapter extends FragmentPagerAdapter {
                                 "달콤한 사이다와 상큼한 라임과 레몬의 배합이\n" +
                                 "청럄하고 산뜻한 맛을 선사한다",
                         R.drawable.image_mojito,
-                        GradientDrawable.Orientation.TOP_BOTTOM,
                         R.color.colorMojitoLight,
                         R.color.colorMojitoDark,
                         pos);
@@ -48,7 +46,6 @@ public class SlideAdapter extends FragmentPagerAdapter {
                                 "달달한 배합이 은은하게 입에\n" +
                                 "퍼지는 칵테일이다",
                         R.drawable.image_pinacolada,
-                        GradientDrawable.Orientation.BR_TL,
                         R.color.colorPinacoladaLight,
                         R.color.colorPinacoladaDark,
                         pos);
@@ -61,7 +58,6 @@ public class SlideAdapter extends FragmentPagerAdapter {
                                 "쌓여진 오렌지의 그라데이션을 보며\n" +
                                 "마실수록 다른 맛을 느낄 수 있다",
                         R.drawable.image_sunrise,
-                        GradientDrawable.Orientation.BR_TL,
                         R.color.colorSunriseLight,
                         R.color.colorSunriseDark,
                         pos);
@@ -73,7 +69,6 @@ public class SlideAdapter extends FragmentPagerAdapter {
                                 "강렬한 조합이 입과 목구멍을\n" +
                                 "강타하는 강렬한 칵테일이다",
                         R.drawable.image_cinderella,
-                        GradientDrawable.Orientation.BR_TL,
                         R.color.colorCinderellaLight,
                         R.color.colorCinderellaDark,
                         pos);

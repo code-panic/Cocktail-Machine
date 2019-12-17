@@ -3,12 +3,14 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    
+    <color name="colorTransparent">#00000000</color>
 
     <color name="colorWhite">#fcfbfc</color>
-    <color name="colorWhite_50">#80fcfbfc</color>
 
-    <color name="colorBlack">#393E46</color>
-    <color name="colorBlack_50">#80393E46</color>
+    <color name="colorBlack255">#393E46</color>
+    <color name="colorBlack144">#80393E46</color>
+    <color name="colorBlack72">#40393E46</color>
 
     <color name="colorSunshineLight">#47C0C1</color>
     <color name="colorSunshineDark">#018896</color>

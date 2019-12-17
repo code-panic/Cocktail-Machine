@@ -66,10 +66,12 @@ public class Bluetooth {
             @Override
             public void run() {
                 try {
-                    byte[] buffer = new byte[1024];
-
                     while (true) {
-                        Thread.sleep(100);
+                        /*
+                        * 여기서 메이킹 애니매이션의 속도를 바꿀 수 있습니다.
+                        * 1000 - 1초
+                        */
+                        Thread.sleep(1000);
 
                         handler.post(new Runnable() {
                             @Override
@@ -78,15 +80,25 @@ public class Bluetooth {
                             }
                         });
 
-                        if(mInputStream.read(buffer) == 14)
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    bluetoothCall.onComplete();
-                                }
-                            });
+                        if (mInputStream.available() > 0) {
+                            byte[] buffer = new byte[mInputStream.available()];
 
-                        Log.d(TAG, "블루투스" + mInputStream.read(buffer) + "");
+                            mInputStream.read(buffer);
+                            String text = new String(buffer);
+
+                            Log.d(TAG, "size - " + mInputStream.available() + " text - " + text);
+
+                            if (text.equals("0")) {
+                                handler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        bluetoothCall.onComplete();
+                                    }
+                                });
+
+                                break;
+                            }
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
