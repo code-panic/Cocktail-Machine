@@ -87,28 +87,34 @@ void setup() {
 void loop() {
   if (blueToothSerial.available()){
     char message = blueToothSerial.read();
-    Serial.write(message);
 
-    /* 칵테일 만들기 전 LED on */
-    digitalWrite(LED,HIGH);
-    delay(3000);
+    if (message >= '0' && message <= '4') {
+      Serial.print(message);
+      Serial.println(" 번 칵테일을 만듭니다");
+      
+      /* 칵테일 만들기 전 LED on */
+      digitalWrite(LED,HIGH);
+      delay(3000);
+      
+      setLCDText("MAKING");
+      
+      /* 칵테일 만들기 */
+      for (int i = 0; i < 7; i++) {
+        digitalWrite(i + 7, HIGH);
+        delay(volume * recipes[atoi(message)][i]);
+        digitalWrite(i + 7, LOW);
+      }
+  
+      /* 칵테일 만든 후에 LED off */
+      delay(1000);
+      digitalWrite(LED,LOW);
     
-    setLCDText("MAKING");
+      setLCDText("COMPLETE!");
     
-    /* 칵테일 만들기 */
-    for (int i = 0; i < 7; i++) {
-      digitalWrite(i + 7, HIGH);
-      delay(volume * recipes[atoi(message)][i]);
-      digitalWrite(i + 7, LOW);
+      blueToothSerial.print("complete");
+    } else {
+      Serial.print(message);
     }
-
-    /* 칵테일 만든 후에 LED off */
-    delay(1000);
-    digitalWrite(LED,LOW);
-
-    setLCDText("COMPLETE!");
-    
-    blueToothSerial.print("complete");
   }
 }
 
