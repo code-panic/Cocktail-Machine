@@ -6,7 +6,8 @@
     
     <color name="colorTransparent">#00000000</color>
 
-    <color name="colorWhite">#fcfbfc</color>
+    <color name="colorWhite255">#fcfbfc</color>
+    <color name="colorWhite144">#80fcfbfc</color>
 
     <color name="colorPink255">#f65c78</color>
     <color name="colorPink144">#80f65c78</color>

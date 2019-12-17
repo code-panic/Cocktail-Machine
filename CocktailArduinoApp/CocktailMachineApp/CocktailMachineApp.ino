@@ -96,12 +96,12 @@ void loop() {
       digitalWrite(LED,HIGH);
       delay(3000);
       
-      setLCDText("MAKING");
+      setLCDText("MAKING...");
       
       /* 칵테일 만들기 */
       for (int i = 0; i < 7; i++) {
         digitalWrite(i + 7, HIGH);
-        delay(volume * recipes[atoi(message)][i]);
+        delay(volume * recipes[(int) message - 48][i]);
         digitalWrite(i + 7, LOW);
       }
   

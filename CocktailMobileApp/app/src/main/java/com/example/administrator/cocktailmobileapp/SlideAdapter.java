@@ -36,9 +36,9 @@ public class SlideAdapter extends FragmentPagerAdapter {
                         "선라이즈",
                         "아아~ 이것이 청춘이다",
                         "맨발로 석양 아래를 뛰어다니는\n" +
-                                "청춘만화의 주인공처럼 망고와 자몽으로 만든\n" +
-                                "맛나는 칵테일을 마셔보는 건 어때요?",
-                        R.drawable.image_cockail_orange,
+                                "청춘만화의 주인공처럼 망고로 만든\n" +
+                                "칵테일을 마셔보는 건 어때요?",
+                        R.drawable.image_cocktail_orange,
                         R.color.colorOrange255,
                         R.color.colorYellow255,
                         pos);

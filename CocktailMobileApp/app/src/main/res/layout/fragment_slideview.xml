@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/spoqa_bold"
                 android:text="모히또"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorWhite255"
                 android:textSize="@dimen/name_size" />
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_marginBottom="36dp"
                 android:fontFamily="@font/spoqa_regular"
                 android:text="쿠바의 작가가 사랑한 칵테일"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorWhite255"
                 android:textSize="@dimen/title_size" />
 
             <TextView
@@ -68,7 +68,7 @@
                 android:fontFamily="@font/spoqa_light"
                 android:lineSpacingMultiplier="1.8"
                 android:text="@string/dummy_description"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorWhite255"
                 android:textSize="@dimen/description_size" />
 
             <Button
