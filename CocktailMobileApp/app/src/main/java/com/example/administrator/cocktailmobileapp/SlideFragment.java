@@ -61,7 +61,7 @@ public class SlideFragment extends Fragment {
         mDesciption.setText(bundle.getString("description"));
         mCardImage.setImageDrawable(getRoundedBitmap(bundle.getInt("imageID")));
 
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.RIGHT_LEFT, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
         gradientDrawable.setCornerRadius(0f);
         mBackground.setBackgroundDrawable(gradientDrawable);
 

@@ -1,6 +1,5 @@
 package com.example.administrator.cocktailmobileapp;
 
-import android.graphics.drawable.GradientDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,65 +11,82 @@ public class SlideAdapter extends FragmentPagerAdapter {
         super(fm);
     }
 
+    /*
+    *
+    * 칵테일이 무엇으로 만들어졌는지만 간략하게 3줄로 설명해주세요
+    *
+    * */
+
     @Override
     public Fragment getItem(int pos) {
         switch (pos) {
             case 0:
                 return SlideFragment.createSlideFragment(
-                        "선샤인",
-                        "석양을 떠올리게 하는 칵테일",
-                        "그레나딘 시럽부터 오렌지,\n" +
-                                "레몬, 파인애플까지 다양한 재료가\n" +
-                                "입에서 톡톡 터진다",
-                        R.drawable.image_sunshine,
-                        R.color.colorSunshineLight,
-                        R.color.colorSunshineDark,
+                        "핑크레이디",
+                        "올해 Parents' night의 여주인공!",
+                        "달콤쌉쌀한 자몽의 향기가\n" +
+                                "매혹적인 그녀를 떠올리게 만드는\n" +
+                                "중독성 있는 칵테일입니다",
+                        R.drawable.image_cocktail_pink,
+                        R.color.colorPink255,
+                        R.color.colorOrange255,
                         pos);
             case 1:
                 return SlideFragment.createSlideFragment(
-                        "모히또",
-                        "어니스트 헤밍웨이가 사랑한 칵테일",
-                        "쿠바에서 만들어진 칵테일로\n" +
-                                "달콤한 사이다와 상큼한 라임과 레몬의 배합이\n" +
-                                "청럄하고 산뜻한 맛을 선사한다",
-                        R.drawable.image_mojito,
-                        R.color.colorMojitoLight,
-                        R.color.colorMojitoDark,
+                        "선라이즈",
+                        "아아~ 이것이 청춘이다",
+                        "맨발로 석양 아래를 뛰어다니는\n" +
+                                "청춘만화의 주인공처럼 망고와 자몽으로 만든\n" +
+                                "맛나는 칵테일을 마셔보는 건 어때요?",
+                        R.drawable.image_cockail_orange,
+                        R.color.colorOrange255,
+                        R.color.colorYellow255,
                         pos);
 
             case 2:
                 return SlideFragment.createSlideFragment(
-                        "피나콜라다",
-                        "스페인어로 파인애플이 무성한 언덕",
-                        "파인애플과 콜라다믹스의\n" +
-                                "달달한 배합이 은은하게 입에\n" +
-                                "퍼지는 칵테일이다",
-                        R.drawable.image_pinacolada,
-                        R.color.colorPinacoladaLight,
-                        R.color.colorPinacoladaDark,
+                        "파인망고",
+                        "하와이 가면 이거 있을껄요?",
+                        "망고, 오렌지, 레몬으로\n" +
+                                "만든 칵테일로 하와이에서 휴가 보내는\n" +
+                                "기분을 느껴보는 건 어떨까요?",
+                        R.drawable.image_cocktail_yellow,
+                        R.color.colorYellow255,
+                        R.color.colorBlue255,
                         pos);
 
             case 3:
                 return SlideFragment.createSlideFragment(
-                        "선라이즈",
-                        "석양을 떠올리게 하는 칵테일",
-                        "그레나딘 시럽 위로\n" +
-                                "쌓여진 오렌지의 그라데이션을 보며\n" +
-                                "마실수록 다른 맛을 느낄 수 있다",
-                        R.drawable.image_sunrise,
-                        R.color.colorSunriseLight,
-                        R.color.colorSunriseDark,
+                        "푸른눈동자",
+                        "오늘 하루 장범준 flex~",
+                        "흔들리는 푸른눈동자 속에서\n" +
+                                "너의 블루레몬이 느껴진거야~\n" +
+                                "오버플로우 포장마차에서 칵테일 한 잔?",
+                        R.drawable.image_cocktail_blue,
+                        R.color.colorBlue255,
+                        R.color.colorPurple255,
                         pos);
             case 4:
                 return SlideFragment.createSlideFragment(
-                        "신데렐라",
-                        "일상을 동화처럼 바꾸는 칵테일",
-                        "레몬, 오렌지, 파인애플의\n" +
-                                "강렬한 조합이 입과 목구멍을\n" +
-                                "강타하는 강렬한 칵테일이다",
-                        R.drawable.image_cinderella,
-                        R.color.colorCinderellaLight,
-                        R.color.colorCinderellaDark,
+                        "아기상어",
+                        "아기상어~ 뚜뚜뚜뚜뚜",
+                        "자몽~ 뚜뚜뚜뚜뚜뚜\n" +
+                                "블루레몬~ 뚜뚜뚜뚜뚜뚜\n" +
+                                "맛있어 ~ 뚜뚜뚜뚜뚜뚜",
+                        R.drawable.image_cocktail_purple,
+                        R.color.colorPurple255,
+                        R.color.colorGray255,
+                        pos);
+            case 5:
+                return SlideFragment.createSlideFragment(
+                        "오버플로우",
+                        "OVERFLOW의 야심작!!!",
+                        "오버플로우 부원들이\n" +
+                                "특별히 엄선한 칵테일이죠\n" +
+                                "혀 버려도 책임 안 집니다ㅋㅋㅋ",
+                        R.drawable.image_cocktail_black,
+                        R.color.colorGray255,
+                        R.color.colorBlack255,
                         pos);
         }
 
@@ -79,6 +95,6 @@ public class SlideAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 }

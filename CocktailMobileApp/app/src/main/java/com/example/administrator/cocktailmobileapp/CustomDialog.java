@@ -66,22 +66,22 @@ public class CustomDialog extends Dialog {
 
                 Bluetooth.getInstance().writeData(pos + "");
 
-                mMakingNum = 0;
+                mMakingNum = 1;
 
                 Bluetooth.getInstance().readData(mHandler, new Bluetooth.BluetoothCall() {
                     @Override
                     public void onMaking() {
                         if (mMakingNum % 3 == 1) {
-                            stateImageView.setImageResource(R.drawable.image_making_2);
-                            stateTextView.setText("칵테일을 만드는 중입니다 . .");
-                            Log.d(TAG, "1");
-                        } else if (mMakingNum % 3 == 2) {
-                            stateImageView.setImageResource(R.drawable.image_making_3);
-                            stateTextView.setText("칵테일을 만드는 중입니다 . . .");
-                            Log.d(TAG, "2");
-                        } else if (mMakingNum % 3 == 0) {
                             stateImageView.setImageResource(R.drawable.image_making_1);
                             stateTextView.setText("칵테일을 만드는 중입니다 .");
+                            Log.d(TAG, "1");
+                        } else if (mMakingNum % 3 == 2) {
+                            stateImageView.setImageResource(R.drawable.image_making_2);
+                            stateTextView.setText("칵테일을 만드는 중입니다 . .");
+                            Log.d(TAG, "2");
+                        } else if (mMakingNum % 3 == 0) {
+                            stateImageView.setImageResource(R.drawable.image_making_3);
+                            stateTextView.setText("칵테일을 만드는 중입니다 . . .");
                             Log.d(TAG, "3");
                         }
 

@@ -10,8 +10,7 @@
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_height="72dp"
         android:fontFamily="@font/spoqa_regular"
         android:text="모히또 칵테일을 만들까요?"
         android:gravity="center"
@@ -36,7 +35,7 @@
 
         <View
             android:layout_width="2dp"
-            android:layout_height="18dp"
+            android:layout_height="24dp"
             android:layout_gravity="center"
             android:background="@color/colorBlack144" />
 
