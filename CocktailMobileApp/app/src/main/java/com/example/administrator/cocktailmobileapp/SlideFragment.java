@@ -1,5 +1,6 @@
 package com.example.administrator.cocktailmobileapp;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -12,6 +13,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
@@ -26,6 +28,8 @@ import android.widget.TextView;
 
 public class SlideFragment extends Fragment {
     private static final String TAG = "SlideView";
+
+    private View mView;
 
     private TextView mName;
     private TextView mTitle;
@@ -53,15 +57,19 @@ public class SlideFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_slideview, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-        mName = view.findViewById(R.id.name);
-        mTitle = view.findViewById(R.id.title);
-        mDesciption = view.findViewById(R.id.description);
-        mButton = view.findViewById(R.id.button);
-        mCardImage = view.findViewById(R.id.card_image);
-        mBackground = view.findViewById(R.id.background);
+        LayoutInflater layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        mView = layoutInflater.inflate(R.layout.fragment_slideview, null);
+
+        mName = mView.findViewById(R.id.name);
+        mTitle = mView.findViewById(R.id.title);
+        mDesciption = mView.findViewById(R.id.description);
+        mButton = mView.findViewById(R.id.button);
+        mCardImage = mView.findViewById(R.id.card_image);
+        mBackground = mView.findViewById(R.id.background);
 
         final Bundle bundle = getArguments();
 
@@ -80,15 +88,11 @@ public class SlideFragment extends Fragment {
                 CustomDialog.getInstance(getContext()).show(bundle.getInt("pos"), bundle.getString("name"));
             }
         });
-
-        Log.d(TAG, "onCreateView");
-
-        return view;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return mView;
     }
 
     @Override
