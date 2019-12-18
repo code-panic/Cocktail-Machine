@@ -8,11 +8,14 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +68,7 @@ public class SlideFragment extends Fragment {
         mName.setText(bundle.getString("name"));
         mTitle.setText(bundle.getString("title"));
         mDesciption.setText(bundle.getString("description"));
-        mCardImage.setImageBitmap(getRoundedBitmap(BitmapFactory.decodeResource( getResources(), bundle.getInt("imageID")), 32));
+        mCardImage.setImageResource(bundle.getInt("imageID"));
 
         GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[] {getResources().getColor(bundle.getInt("gradientStartColor")), getResources().getColor(bundle.getInt("gradientEndColor"))});
         gradientDrawable.setCornerRadius(0f);
@@ -78,39 +81,40 @@ public class SlideFragment extends Fragment {
             }
         });
 
+        Log.d(TAG, "onCreateView");
+
         return view;
     }
 
-//    //이미지의 모서리 라운딩 처리
-//    private RoundedBitmapDrawable getRoundedBitmap(int imageId) {
-//        Bitmap bitmap = BitmapFactory.decodeResource( getResources(), imageId);
-//        RoundedBitmapDrawable roundedDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-//
-//        roundedDrawable.setCircular(true);
-//        roundedDrawable.setCornerRadius(64);
-//        roundedDrawable.setAntiAlias(true);
-//
-//        return roundedDrawable;
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
-    private Bitmap getRoundedBitmap(Bitmap bitmap, int pixels) {
-        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(output);
+    @Override
+    public void onStop() {
+        super.onStop();
 
-        final int color = 0xff424242;
-        final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
-        final RectF rectF = new RectF(rect);
-        final float roundPx = pixels;
+        Log.d(TAG, "stop");
+        recycleBitmap(mCardImage);
+    }
 
-        paint.setAntiAlias(true);
-        canvas.drawARGB(0, 0, 0, 0);
-        paint.setColor(color);
-        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
-        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-        canvas.drawBitmap(bitmap, rect, rect, paint);
+        Log.d(TAG, "destroy");
+        recycleBitmap(mCardImage);
+    }
 
-        return output;
+    private void recycleBitmap (ImageView imageView) {
+        Drawable drawable = imageView.getDrawable();
+
+        if (drawable instanceof BitmapDrawable) {
+            Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+            bitmap.recycle();
+        }
+
+        drawable.setCallback(null);
     }
 }

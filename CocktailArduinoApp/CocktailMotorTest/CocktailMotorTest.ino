@@ -12,11 +12,9 @@ void setup() {
 }
 
 void loop() { 
-//  for (int i = 7; i <= 13; i++ ) {
-//    motorTest(i);
-//  }
-
-//  motorTest();
+  motorTest(13);
+//  motorTest(9); 
+// motorTest(10);
 }
 
 void motorTest (int num) {
@@ -25,6 +23,6 @@ void motorTest (int num) {
   Serial.print("번 모터 테스트\n");
   
   digitalWrite(num, HIGH);
-  delay(4000);
+  delay(1500);
   digitalWrite(num, LOW);
 }
