@@ -26,7 +26,7 @@ public class SlideAdapter extends FragmentPagerAdapter {
                         R.drawable.image_cocktail_pink,
                         R.color.colorPink255,
                         R.color.colorOrange255,
-                        0)
+                        "0")
         );
 
         mFragmentList.add(
@@ -39,7 +39,7 @@ public class SlideAdapter extends FragmentPagerAdapter {
                         R.drawable.image_cocktail_orange,
                         R.color.colorOrange255,
                         R.color.colorYellow255,
-                        1)
+                        "1")
         );
 
         mFragmentList.add(
@@ -51,8 +51,21 @@ public class SlideAdapter extends FragmentPagerAdapter {
                                 "기분을 느껴보는 건 어떨까요?",
                         R.drawable.image_cocktail_yellow,
                         R.color.colorYellow255,
+                        R.color.colorGreen255,
+                        "2")
+        );
+
+        mFragmentList.add(
+                SlideFragment.createSlideFragment(
+                        "몰디브",
+                        "사상초유의 이병헌급 액션칵테일!",
+                        "모히또 가서 몰디브 한 잔 해야지?\n" +
+                                "이병헌 같은 망고와 블루레몬을\n" +
+                                "즐겨보세요",
+                        R.drawable.image_cocktail_green,
+                        R.color.colorGreen255,
                         R.color.colorBlue255,
-                        2)
+                        "3")
         );
 
         mFragmentList.add(
@@ -65,7 +78,7 @@ public class SlideAdapter extends FragmentPagerAdapter {
                         R.drawable.image_cocktail_blue,
                         R.color.colorBlue255,
                         R.color.colorPurple255,
-                        3)
+                        "4")
         );
 
         mFragmentList.add(
@@ -78,7 +91,7 @@ public class SlideAdapter extends FragmentPagerAdapter {
                         R.drawable.image_cocktail_purple,
                         R.color.colorPurple255,
                         R.color.colorGray255,
-                        4)
+                        "5")
         );
 
         mFragmentList.add(
@@ -91,7 +104,7 @@ public class SlideAdapter extends FragmentPagerAdapter {
                         R.drawable.image_cocktail_black,
                         R.color.colorGray255,
                         R.color.colorBlack255,
-                        5)
+                        "6")
         );
     }
 

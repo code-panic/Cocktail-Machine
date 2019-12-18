@@ -38,7 +38,7 @@ public class SlideFragment extends Fragment {
     private ImageView mCardImage;
     private RelativeLayout mBackground;
 
-    public static SlideFragment createSlideFragment (String name, String title, String description, int imageID , int gradientStartColor, int gradientEndColor, int position) {
+    public static SlideFragment createSlideFragment (String name, String title, String description, int imageID , int gradientStartColor, int gradientEndColor, String message) {
         SlideFragment slideFragment = new SlideFragment();
 
         Bundle bundle = new Bundle();
@@ -49,7 +49,7 @@ public class SlideFragment extends Fragment {
         bundle.putInt("imageID", imageID);
         bundle.putInt("gradientStartColor", gradientStartColor);
         bundle.putInt("gradientEndColor", gradientEndColor);
-        bundle.putInt("pos", position);
+        bundle.putString("message", message);
 
         slideFragment.setArguments(bundle);
 
@@ -85,7 +85,7 @@ public class SlideFragment extends Fragment {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CustomDialog.getInstance(getContext()).show(bundle.getInt("pos"), bundle.getString("name"));
+                CustomDialog.getInstance(getContext()).show(bundle.getString("message"), bundle.getString("name"));
             }
         });
     }
@@ -99,7 +99,6 @@ public class SlideFragment extends Fragment {
     public void onStop() {
         super.onStop();
 
-        Log.d(TAG, "stop");
         recycleBitmap(mCardImage);
     }
 
@@ -107,7 +106,6 @@ public class SlideFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
 
-        Log.d(TAG, "destroy");
         recycleBitmap(mCardImage);
     }
 

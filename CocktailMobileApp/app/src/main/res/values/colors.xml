@@ -18,6 +18,9 @@
     <color name="colorYellow255">#ffd800</color>
     <color name="colorYellow144">#80ffd800</color>
 
+    <color name="colorGreen255">#1fab89</color>
+    <color name="colorGreen144">#801fab89</color>
+
     <color name="colorBlue255">#617be3</color>
     <color name="colorBlue144">#80617be3</color>
 

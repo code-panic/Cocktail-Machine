@@ -50,8 +50,10 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);  // LCD 객체 선언
 int recipes[5][7] = { {20, 0, 0, 20, 20, 0, 0},
                      {20, 20, 0, 0, 20, 0, 0},
                      {0, 15, 15, 15, 0, 15 ,0},
+                     {0, 0, 0, 0, 0, 0, 0},
                      {24, 0, 0, 12, 0, 0, 24},
-                     {0, 0, 0, 30, 0, 0, 30} };
+                     {0, 0, 0, 30, 0, 0, 30},
+                     {0, 0, 0, 0, 0, 0, 0} };
 
 /* 
  * 여기에서 칵테일의 양을 조절할 수 있습니다
@@ -88,9 +90,9 @@ void loop() {
   if (blueToothSerial.available()){
     char message = blueToothSerial.read();
 
-    if (message >= '0' && message <= '4') {
+    if (message >= '0' && message <= '6') {
       Serial.print(message);
-      Serial.println(" 번 칵테일을 만듭니다");
+      Serial.println(" 칵테일을 만듭니다");
       
       /* 칵테일 만들기 전 LED on */
       digitalWrite(LED,HIGH);

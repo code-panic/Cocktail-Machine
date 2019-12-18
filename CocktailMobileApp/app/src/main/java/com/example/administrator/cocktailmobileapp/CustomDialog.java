@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -35,6 +36,8 @@ public class CustomDialog extends Dialog {
         layoutParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         layoutParams.dimAmount = 0.5f;
         getWindow().setAttributes(layoutParams);
+//        setCancelable(true);
+//        setCanceledOnTouchOutside(true);
 
         mHandler = new Handler();
     }
@@ -44,9 +47,10 @@ public class CustomDialog extends Dialog {
         super.onCreate(savedInstanceState);
     }
 
-    public void show (final int pos, String name) {
+    public void show (final String message, String name) {
+        final CustomDialog self = this;
 
-        this.show();
+        self.show();
 
         setContentView(R.layout.dialog_check);
 
@@ -64,7 +68,7 @@ public class CustomDialog extends Dialog {
                 final ImageView stateImageView = findViewById(R.id.state_image);
                 final TextView stateTextView = findViewById(R.id.state_text);
 
-                Bluetooth.getInstance().writeData(pos + "");
+                Bluetooth.getInstance().writeData(message);
 
                 mMakingNum = 1;
 
@@ -99,7 +103,12 @@ public class CustomDialog extends Dialog {
                         stateImageView.setImageResource(R.drawable.image_complete);
                         stateTextView.setText("칵테일을 완성했습니다!");
 
-
+//                        self.findViewById(R.id.background_dialog).setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                self.dismiss();
+//                            }
+//                        });
                     }
                 });
             }
