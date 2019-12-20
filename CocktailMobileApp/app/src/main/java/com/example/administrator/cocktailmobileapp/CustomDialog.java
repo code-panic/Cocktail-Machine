@@ -103,12 +103,12 @@ public class CustomDialog extends Dialog {
                         stateImageView.setImageResource(R.drawable.image_complete);
                         stateTextView.setText("칵테일을 완성했습니다!");
 
-//                        self.findViewById(R.id.background_dialog).setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                self.dismiss();
-//                            }
-//                        });
+                        self.findViewById(R.id.background_dialog).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                self.dismiss();
+                            }
+                        });
                     }
                 });
             }

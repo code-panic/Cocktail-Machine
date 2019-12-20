@@ -12,9 +12,13 @@ void setup() {
 }
 
 void loop() { 
-  motorTest(13);
+  motorTest(10);
 //  motorTest(9); 
-// motorTest(10);
+// motorTest(108;
+
+// for (int i = 7; i <= 13; i++ ) {
+//    motorTest(i);
+//  }
 }
 
 void motorTest (int num) {
