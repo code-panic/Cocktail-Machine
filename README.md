@@ -13,7 +13,7 @@
  ### 2019
   <img align="left" src="/image/2019_1.jpeg" height="300" style="float: left">
   <img align="left" src="/image/2019_2.jpeg" height="300" style="float: left">
-  <img src="/image/2019_3.jpeg" height="300" style="float: left">
+  <img align="left" src="/image/2019_3.jpeg" height="300" style="float: left">
 
  ### 2018
   <img src="/image/2018_1.jpeg" height="300" style="float: left">
