@@ -11,14 +11,14 @@
  2018년에는 80분 만에 100인 분의 칵테일을 2019년에는 100분 만에 200인 분의 칵테일을 제공했습니다!  
  
  ### 2019
-  <img align="left" src="/image/2019_1.jpeg" height="400" style="float: left">
-  <img align="left" src="/image/2019_2.jpeg" height="400" style="float: left">  
-  <img align="left" src="/image/2019_3.jpeg" height="400" style="float: left">
+  <img align="left" src="/image/2019_1.jpeg" height="300" style="float: left">
+  <img align="left" src="/image/2019_2.jpeg" height="300" style="float: left">  
+  <img align="left" src="/image/2019_3.jpeg" height="300" style="float: left">
 
  ### 2018
-  <img align="left" src="/image/2018_1.jpeg" height="400" style="float: left">
-  <img align="left" src="/image/2018_2.jpeg" height="400" style="float: left">
-  <img align="left" src="/image/2018_3.jpeg" height="400" style="float: left">
+  <img align="left" src="/image/2018_1.jpeg" height="300" style="float: left">
+  <img align="left" src="/image/2018_2.jpeg" height="300" style="float: left">  
+  <img align="left" src="/image/2018_3.jpeg" height="300" style="float: left">
 
 ## 설치방법
  1. 칵테일 머신의 아두이노 보드에 CocktailMachineApp.ino를 업로드한다.
