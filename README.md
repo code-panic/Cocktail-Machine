@@ -11,9 +11,9 @@
  2018년에는 80분 만에 100인 분의 칵테일을 2019년에는 100분 만에 200인 분의 칵테일을 제공했습니다!  
  
  ### 2019
-  ![2019_1](/image/2019_1.jpeg){: width="100"}
-  ![2019_2](/image/2019_2.jpeg){: width="100" height="300"}
-  ![2019_3](/image/2019_3.jpeg)<img src="/image/2019_3.jpeg" height="300">
+  <img src="/image/2019_1.jpeg" height="300">
+  <img src="/image/2019_2.jpeg" height="300">
+  <img src="/image/2019_3.jpeg" height="300">
 
  ### 2018
   ![2018_1](/image/2018_1.jpeg){: width="100"}{: .alignleft}
