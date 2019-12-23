@@ -11,27 +11,28 @@
  2018년에는 80분 만에 100인 분의 칵테일을 2019년에는 100분 만에 200인 분의 칵테일을 제공했습니다!  
  
  ### 2019
-  <img align="left" src="/image/2019_1.jpeg" height="300" style="float: left">
-  <img align="left" src="/image/2019_2.jpeg" height="300" style="float: left">
-  <img align="left" src="/image/2019_3.jpeg" height="300" style="float: left">
+  <img align="left" src="/image/2019_1.jpeg" height="400" style="float: left">
+  <img align="left" src="/image/2019_2.jpeg" height="400" style="float: left">  
+  <img align="left" src="/image/2019_3.jpeg" height="400" style="float: left">
 
  ### 2018
-  <img src="/image/2018_1.jpeg" height="300" style="float: left">
-  <img src="/image/2018_2.jpeg" height="300" style="float: left">
-  <img src="/image/2018_3.jpeg" height="300" style="float: left">
+  <img align="left" src="/image/2018_1.jpeg" height="400" style="float: left">
+  <img align="left" src="/image/2018_2.jpeg" height="400" style="float: left">
+  <img align="left" src="/image/2018_3.jpeg" height="400" style="float: left">
 
 ## 설치방법
  1. 칵테일 머신의 아두이노 보드에 CocktailMachineApp.ino를 업로드한다.
  2. 태블릿 앱에 CocktailMoblieApp 앱을 설치한다.
- 
+   
  ### 주의사항
+  * 아두이노 전원을 키고 앱을 열어주세요.
+  * 앱이 갑자기 닫힐 때는 칵테일앱을 완전히 닫은 후 새로 켜 주세요.
   * 사용 후에는 음료수가 묻어있는 모터 안쪽을 물로 청소해주어야 합니다.  
     그럴 때는 CocktailMoterTest.ino를 아두이노에 설치해서 사용해주세요.
-  * 앱이 갑자기 닫힐 때는 칵테일앱을 완전히 닫은 후 새로 켜 주세요.  
-  
+    
 ## 회로도
  ![회로도](/image/칵테일머신_회로도.png)
-
+   
  ### 준비물
   * 아두이노 우노
   * 블루투스 모듈
